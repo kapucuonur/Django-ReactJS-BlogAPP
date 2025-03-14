@@ -19,7 +19,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('REACT_APP_API_URL', 'http://localhost:3000'),
+    os.environ.get('DJANGO_APP_API_URL', 'http://localhost:3000'),
 ]
 
 # Application definition
@@ -106,3 +106,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

@@ -1,28 +1,29 @@
 export default class APIService {
     static getBaseURL() {
-        return import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        return import.meta.env.VITE_API_URL || 'http://localhost:8000';
     }
 
-    // Get list of articles
-    static GetArticles(token) {
-        return fetch(`${this.getBaseURL()}/api/articles/`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${token}`,
-            },
-        })
-        .then((resp) => {
-            if (!resp.ok) {
-                throw new Error(`Error fetching articles: ${resp.statusText}`);
+    static async GetArticles(token) {
+        try {
+            const response = await fetch(`${this.getBaseURL()}/api/articles/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error fetching articles: ${response.statusText}`);
             }
-            return resp.json();
-        })
-        .catch((error) => {
-            console.error(error);
+
+            return await response.json();
+        } catch (error) {
+            console.error('Error in GetArticles:', error);
             return [];
-        });
+        }
     }
+
 
     // Update an article
     static UpdateArticle(article_id, body, token) {
@@ -87,23 +88,25 @@ export default class APIService {
     }
 
     // Login a user
-    static LoginUser(body) {
-        return fetch(`${this.getBaseURL()}/auth/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-        })
-        .then((resp) => {
-            if (!resp.ok) {
-                throw new Error(`Login failed: ${resp.statusText}`);
+    static async LoginUser(body) {
+        try {
+            const response = await fetch(`${this.getBaseURL()}/auth/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Login failed: ${response.statusText}`);
             }
-            return resp.json();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+
+            return await response.json();
+        } catch (error) {
+            console.error('Error in LoginUser:', error);
+            throw error; // Re-throw the error for the caller to handle
+        }
     }
 
     // Register a new user
