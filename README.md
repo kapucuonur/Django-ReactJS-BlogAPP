@@ -104,7 +104,6 @@ npm install && npm run build
 npx serve -s dist
 5️⃣ Add Environment Variables:
 
-t
 VITE_API_URL=https://your-backend-url.render.com
 🏆 Conclusion
 Your React + Django Blog App is now live! 🎉
