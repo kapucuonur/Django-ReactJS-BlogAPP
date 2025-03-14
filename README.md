@@ -68,48 +68,67 @@ npm run dev
 ### 🖥 API Endpoints
 
 Method Endpoint Description
-POST /api/auth/login/ Login (JWT)
-POST /api/auth/register/ Register
-GET /api/articles/ Get all posts
-POST /api/articles/ Create post (Auth required)
-PUT /api/articles/:id/ Update post (Auth required)
-DELETE /api/articles/:id/ Delete post (Auth required)
+
+# POST /api/auth/login/ Login (JWT)
+
+# POST /api/auth/register/ Register
+
+# GET /api/articles/ Get all posts
+
+# POST /api/articles/ Create post (Auth required)
+
+# PUT /api/articles/:id/ Update post (Auth required)
+
+# DELETE /api/articles/:id/ Delete post (Auth required)
 
 ### 🌍 Deployment (Render)
 
 🔹 1. Deploy Backend to Render
-1️⃣ Push the project to GitHub
-2️⃣ Create a new service on Render
-3️⃣ Select your backend repository
-4️⃣ Set Build Command:
+
+# 1️⃣ Push the project to GitHub
+
+# 2️⃣ Create a new service on Render
+
+# 3️⃣ Select your backend repository
+
+# 4️⃣ Set Build Command:
 
 pip install -r requirements.txt && python manage.py migrate
-5️⃣ Set Start Command:
+
+# 5️⃣ Set Start Command:
 
 gunicorn backend.wsgi:application
-6️⃣ Add Environment Variables:
+
+# 6️⃣ Add Environment Variables:
 
 DJANGO_SECRET_KEY=<your-secret-key>
 ALLOWED_HOSTS=your-backend-url.render.com
 DATABASE_URL=<your-database-url>
 
 🔹 2. Deploy Frontend to Render
-1️⃣ Create a new service on Render
-2️⃣ Select your frontend repository
-3️⃣ Set Build Command:
+
+# 1️⃣ Create a new service on Render
+
+# 2️⃣ Select your frontend repository
+
+# 3️⃣ Set Build Command:
 
 npm install && npm run build
-4️⃣ Set Start Command:
+
+# 4️⃣ Set Start Command:
 
 npx serve -s dist
-5️⃣ Add Environment Variables:
+
+# 5️⃣ Add Environment Variables:
 
 VITE_API_URL=https://your-backend-url.render.com
 🏆 Conclusion
 Your React + Django Blog App is now live! 🎉
 
-🤝 Contributing
+### 🤝 Contributing
+
 Pull requests are welcome. For major changes, open an issue first.
 
-📜 License
+### 📜 License
+
 MIT License.
