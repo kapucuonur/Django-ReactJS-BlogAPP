@@ -8,4 +8,5 @@ typing_extensions==4.12.2
 whitenoise
 gunicorn
 django-cors-headers
-python-dotenv 
+python-dotenv
+psycopg2-binary
