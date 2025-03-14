@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -73,9 +74,9 @@ DATABASES = {
         default=os.environ.get('DATABASE_URL'),
         conn_max_age=600,
         conn_health_checks=True,
+        ssl_require=True,  # Enforce SSL for secure connections
     )
 }
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -104,7 +105,3 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# if 'DATABASE_URL' in os.environ:
-#     import dj_database_url
-#     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
