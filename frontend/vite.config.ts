@@ -1,21 +1,13 @@
-// import { defineConfig } from 'vite';
-
-// export default defineConfig({
-//   server: {
-//     port: 3000
-//   }
-// });
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [react()],
   css: {
     postcss: {
-      plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ],
+      plugins: [tailwindcss, autoprefixer],
     },
   },
 });
