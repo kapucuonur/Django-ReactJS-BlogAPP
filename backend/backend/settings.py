@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -12,7 +11,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-
 # DEBUG
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
@@ -21,7 +19,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    os.environ.get('REACT_APP_API_URL', 'http://localhost:3000'),
 ]
 
 # Application definition
@@ -76,7 +74,7 @@ DATABASES = {
         'NAME': os.environ.get('DATABASE_NAME'),
         'USER': os.environ.get('DATABASE_USER'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get('ALLOWED_HOSTS'),
+        'HOST': os.environ.get('DATABASE_HOST'),
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }

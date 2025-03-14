@@ -1,7 +1,11 @@
 export default class APIService {
+    static getBaseURL() {
+        return import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+    }
+
     // Get list of articles
     static GetArticles(token) {
-        return fetch(`http://127.0.0.1:8000/api/articles/`, {
+        return fetch(`${this.getBaseURL()}/api/articles/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,7 +26,7 @@ export default class APIService {
 
     // Update an article
     static UpdateArticle(article_id, body, token) {
-        return fetch(`http://127.0.0.1:8000/api/articles/${article_id}/`, {
+        return fetch(`${this.getBaseURL()}/api/articles/${article_id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +47,7 @@ export default class APIService {
 
     // Insert a new article
     static InsertArticle(body, token) {
-        return fetch(`http://127.0.0.1:8000/api/articles/`, {
+        return fetch(`${this.getBaseURL()}/api/articles/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +68,7 @@ export default class APIService {
 
     // Delete an article
     static DeleteArticle(article_id, token) {
-        return fetch(`http://127.0.0.1:8000/api/articles/${article_id}/`, {
+        return fetch(`${this.getBaseURL()}/api/articles/${article_id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +88,7 @@ export default class APIService {
 
     // Login a user
     static LoginUser(body) {
-        return fetch(`http://127.0.0.1:8000/auth/`, {
+        return fetch(`${this.getBaseURL()}/auth/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +108,7 @@ export default class APIService {
 
     // Register a new user
     static RegisterUser(body) {
-        return fetch(`http://127.0.0.1:8000/api/users/`, {
+        return fetch(`${this.getBaseURL()}/api/users/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

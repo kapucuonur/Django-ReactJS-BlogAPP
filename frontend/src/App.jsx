@@ -12,9 +12,14 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('mytoken') || ''); // Get token from local storage
   let navigate = useNavigate();
 
+  // Function to get the base URL
+  const getBaseURL = () => {
+    return import.meta.env.VITE_API_URL || 'http://localhost:8000';
+  };
+
   // Fetch articles
   useEffect(() => {
-    fetch('http://localhost:8000/api/articles/', {
+    fetch(`${getBaseURL()}/api/articles/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
