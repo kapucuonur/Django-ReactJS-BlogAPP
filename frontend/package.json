@@ -3,10 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+  
+    "scripts": {
     "start": "npx vite preview",
-    "build": "npx vite build"
-  },
+    "build": "npx vite build",
+    "dev": "npx vite",
+    "lint": "eslint .",
+    "preview": "npx vite preview"
+    },
+  
+  
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
